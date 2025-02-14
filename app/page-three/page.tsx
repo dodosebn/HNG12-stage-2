@@ -1,9 +1,9 @@
 import React from 'react'
-import TicketReady from '@/components/ticketReady';
+import TicketRadi from '@/components/customs/ticketRadi';
 const page = () => {
   return (
     <div>
-      <TicketReady />
+      <TicketRadi />
     </div>
   )
 }
