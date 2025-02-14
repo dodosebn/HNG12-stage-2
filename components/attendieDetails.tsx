@@ -15,26 +15,14 @@ const AttendieDetails = () => {
     const [err, setErr] = useState('');
     const router = useRouter();
 
-    const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append('upload_preset', 'HNG12task2_upload_preset');
-            try {
-                const response = await fetch('https://api.cloudinary.com/v1_1/duifdpxnu/image/upload', {
-                    method: 'POST',
-                    body: formData,
-                });
-                const data = await response.json();
-                if (data.secure_url) {
-                    setImageUrl(data.secure_url);
-                } else {
-                    alert('Failed to upload image. Please try again.');
-                }
-            } catch (error) {
-                console.error('Error uploading image:', error);
-            }
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImageUrl(reader.result as string);
+            };
+            reader.readAsDataURL(file);
         }
     };
 
