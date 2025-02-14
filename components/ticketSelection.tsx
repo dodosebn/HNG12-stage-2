@@ -5,16 +5,19 @@ import TickType from './customs/tickType';
 import ButtonCtrl from './customs/buttonCtrl';
 import UpPagesInfo from './customs/upPagesInfo';
 import LayoutCont from './customs/layoutCont';
+import Loading from './customs/loading';
 
 const TicketSelection = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [numberOfTickets, setNumberOfTickets] = useState<number>(1);
   const [err, setErr] = useState('');
+  const [loading, setLoading] = useState<boolean>(false);  
+
   const router = useRouter();
 
   const handleTicketTypeSelection = (type: string) => {
-    setSelectedType(type); // Update the selected type
-    setErr(''); // Clear any errors
+    setSelectedType(type); 
+    setErr(''); 
   };
 
   const handleNextClick = () => {
@@ -22,13 +25,26 @@ const TicketSelection = () => {
       setErr('Please select a ticket type');
       return;
     }
+    setLoading(true);
     localStorage.setItem('selectedType', selectedType);
     localStorage.setItem('numberOfTickets', numberOfTickets.toString());
-    router.push('/page-two'); // Navigate to the next page
+    
+    // Simulate a delay for loading
+    setTimeout(() => {
+      router.push('/page-two');
+      setLoading(false);
+    }, 1000); 
   };
 
   const handleReturnClicks = () => {
+    setLoading(true);
     localStorage.removeItem('selectedType');
+    
+  
+    setTimeout(() => {
+      router.push('/');
+      setLoading(false);
+    }, 1000); 
   };
 
   return (
@@ -47,31 +63,29 @@ const TicketSelection = () => {
         <div>
           <h3 className='text-lg font-semibold Roboto'>Select Ticket Type:</h3>
           {err && <span className='text-red-500'>{err}</span>}
-          <div className='p-2 rounded-2xl border-[#07373F] border-[1px] bg-[#041E23] flex gap-3'>
-            <div className={`${err && 'border-[2px] border-red-500 rounded-2xl'}`}>
-              <TickType 
-                price='Free' 
-                info='Regular Access' 
-                handleTicketTypeSelection={handleTicketTypeSelection}
-                isSelected={selectedType === 'Regular Access'} // Pass isSelected prop
-              />
-            </div>
-            <div className={`${err && 'border-[2px] border-red-500 rounded-2xl'}`}>
-              <TickType 
-                price='$150' 
-                info='VIP/ACCESS' 
-                handleTicketTypeSelection={handleTicketTypeSelection}
-                isSelected={selectedType === 'VIP/ACCESS'} // Pass isSelected prop
-              />
-            </div>
-            <div className={`${err && 'border-[2px] border-red-500 rounded-2xl'}`}>
-              <TickType 
-                price='$150' 
-                info='VVIP/ACCESS' 
-                handleTicketTypeSelection={handleTicketTypeSelection}
-                isSelected={selectedType === 'VVIP/ACCESS'} // Pass isSelected prop
-              />
-            </div>
+          <div className='p-2 rounded-2xl border-[#07373F] border-[1px] bg-[#041E23] 
+          flex gap-3'>
+            <TickType 
+              price='Free' 
+              info='Regular Access' 
+              handleTicketTypeSelection={handleTicketTypeSelection}
+              isSelected={selectedType === 'Regular Access'} 
+              err={err}
+            />
+            <TickType 
+              price='$150' 
+              info='VIP/ACCESS' 
+              handleTicketTypeSelection={handleTicketTypeSelection}
+              isSelected={selectedType === 'VIP/ACCESS'} 
+              err={err}
+            />
+            <TickType 
+              price='$150' 
+              info='VVIP/ACCESS' 
+              handleTicketTypeSelection={handleTicketTypeSelection}
+              isSelected={selectedType === 'VVIP/ACCESS'} 
+              err={err}
+            />
           </div>
         </div>
 
@@ -84,9 +98,9 @@ const TicketSelection = () => {
           </select>
         </div>
 
-        <div className='flex justify-between mt-6'>
-          <ButtonCtrl btnName='Cancel' bgCol='#041E23' color='#24A0B5' handleClicks={handleReturnClicks}/>
-          <ButtonCtrl btnName='Next' bgCol='#24A0B5' color='#fff' handleClicks={handleNextClick}/>
+        <div className='flex flex-col lg:flex-row justify-between gap-[1rem] mt-6'>
+          {loading ? <Loading /> : <ButtonCtrl btnName='Cancel' bgCol='#041E23' color='#24A0B5' handleClicks={handleReturnClicks}/>}
+          {loading ? <Loading /> : <ButtonCtrl btnName='Next' bgCol='#24A0B5' color='#fff' handleClicks={handleNextClick}/>}
         </div>
       </main>
     </LayoutCont>

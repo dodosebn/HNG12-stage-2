@@ -1,12 +1,13 @@
 import React from 'react';
 import { TickTypeProps } from '@/types';
 
-const TickType = ({ price, info, handleTicketTypeSelection, isSelected }: TickTypeProps) => {
+const TickType = ({ price, info, handleTicketTypeSelection, isSelected, err}: TickTypeProps) => {
   return (
     <div
-      style={{ backgroundColor: isSelected ? '#12464E' : '#02191D' }} // Use isSelected to determine the color
-      className="p-2 border-[#197686] border-[1px] rounded-xl Roboto cursor-pointer"
-      onClick={() => handleTicketTypeSelection(info)} // Call the parent's handler
+      style={{ backgroundColor: isSelected ? '#12464E' : '#02191D' }}
+      className= {`${err && 'border-[2px] border-red-500 rounded-2xl'} p-2
+       border-[#197686] border-[1px] rounded-xl Roboto cursor-pointer`}
+      onClick={() => handleTicketTypeSelection(info)} 
     >
       <h1 className='text-[#fff] font-semibold'>{price}</h1>
       <p>{info}</p>

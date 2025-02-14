@@ -17,11 +17,15 @@
     --foreground: #ededed;
   }
 }
-
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 @layer components {
@@ -34,7 +38,15 @@ body {
   }
   .pgTitle{
 font-family:'Courier New', Courier, monospace;
+font-size: larger;
   }
+  /* .clip-path-inset{
+    position: relative;
+    width: auto;
+    height:auto;
+ border-bottom-style: groove;
+    mask:radial-gradient(20px at 40px 40px, transparent 98%, black) -40px -40px;
+  } */
   
 }
 

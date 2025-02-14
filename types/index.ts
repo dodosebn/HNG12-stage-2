@@ -7,11 +7,11 @@ export interface LayoutContProps {
 }
 
 export interface TickTypeProps {
-    // bgCol: string;
+    isSelected: boolean; // Change this to boolean
     price: string;
     info: string;
     handleTicketTypeSelection: (type: string) => void;
-}
+  }
 
 export interface ButtonCtrlProps {
     btnName: string;

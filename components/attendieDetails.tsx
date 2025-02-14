@@ -77,9 +77,9 @@ const AttendieDetails = () => {
                                 <TiWeatherStormy size={32} />
                             </label>
                         </div>
-                        <div className="mx-auto flex justify-center text-[10px]">
+                        <div className="mx-auto flex justify-center text-[10px] ">
                             {imageUrl ? (
-                                <Image src={imageUrl} alt="Uploaded Image" width={50} height={50} />
+                                <Image src={imageUrl} alt="Uploaded Image" width={1000} height={1000} />
                             ) : (
                                 <span>Drag & drop or click to upload</span>
                             )}
@@ -138,9 +138,9 @@ const AttendieDetails = () => {
                 </div>
             </section>
 
-            <div className="flex justify-between mt-6">
+            <div className="flex flex-col lg:flex-row justify-between mt-6">
                 <ButtonCtrl btnName="Back" bgCol="#041E23" color="#24A0B5" handleClicks={handleReturnClicks} />
-                <ButtonCtrl btnName="GetTicket" bgCol="#24A0B5" color="#fff" handleClicks={handleNextClick} />
+                <ButtonCtrl btnName="Get My Free Ticket" bgCol="#24A0B5" color="#fff" handleClicks={handleNextClick} />
             </div>
         </LayoutCont>
     );
