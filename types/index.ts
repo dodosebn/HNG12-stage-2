@@ -1,4 +1,3 @@
-import ButtonCtrl from "@/components/customs/buttonCtrl";
 
 export interface LayoutContProps {
     // padding: string;
@@ -8,16 +7,18 @@ export interface LayoutContProps {
 }
 
 export interface TickTypeProps {
-    bgCol: string;
+    // bgCol: string;
     price: string;
     info: string;
+    handleTicketTypeSelection: (type: string) => void;
 }
+
 export interface ButtonCtrlProps {
     btnName: string;
     bgCol: string;
     color: string;
-    handleClicks: any;
-}
+    handleClicks: () => void;
+  }
 export interface upPageInfoProps {
     pgName: string;
     pgNum: string;

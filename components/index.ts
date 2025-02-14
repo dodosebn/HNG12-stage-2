@@ -1,2 +1,4 @@
 import TicketSelection from "./ticketSelection";
-export default {TicketSelection};
+import AttendieDetails from "./attendieDetails";
+import TicketReady from "./ticketReady";
+export default {TicketSelection, AttendieDetails, TicketReady};
