@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Road+Rage&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,28 +17,28 @@
     --foreground: #ededed;
   }
 }
-*{
+/* *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+} */
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 @layer components {
   .topic {
-    font-family: 'Road Rage', sans-serif;
+    font-family: "Road Rage", sans-serif;
   }
   .Roboto {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 1rem;
   }
-  .pgTitle{
-font-family:'Courier New', Courier, monospace;
-font-size: larger;
+  .pgTitle {
+    font-family: "Courier New", Courier, monospace;
+    font-size: larger;
   }
   /* .clip-path-inset{
     position: relative;
@@ -47,6 +47,4 @@ font-size: larger;
  border-bottom-style: groove;
     mask:radial-gradient(20px at 40px 40px, transparent 98%, black) -40px -40px;
   } */
-  
 }
-

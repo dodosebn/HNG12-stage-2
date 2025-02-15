@@ -1,15 +1,13 @@
-import React from 'react'
-import AttendieDetails from '@/components/attendieDetails';
-import PageHolder from '@/components/customs/pageHolder';
+import React from "react";
+import AttendieDetails from "@/components/attendieDetails";
+import PageHolder from "@/components/customs/pageHolder";
 
 const page = () => {
   return (
     <PageHolder>
-       <AttendieDetails />
+      <AttendieDetails />
     </PageHolder>
-   
-
-  )
-}
+  );
+};
 
 export default page;
