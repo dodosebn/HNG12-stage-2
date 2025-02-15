@@ -10,6 +10,7 @@ export interface TickTypeProps {
     // bgCol: string;
     price: string;
     info: string;
+    isSelected: boolean;
     handleTicketTypeSelection: (type: string) => void;
 }
 
