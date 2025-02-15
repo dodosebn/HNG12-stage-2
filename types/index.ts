@@ -1,13 +1,8 @@
-
 export interface LayoutContProps {
-    // padding: string;
-    // radius: string;
-    // height: string;
     children: React.ReactNode;
 }
 
 export interface TickTypeProps {
-    // bgCol: string;
     price: string;
     info: string;
     isSelected: boolean;
@@ -18,9 +13,10 @@ export interface ButtonCtrlProps {
     btnName: string;
     bgCol: string;
     color: string;
-    handleClicks: () => void;
-  }
+    handleClicks?: () => void;
+}
+
 export interface upPageInfoProps {
-    pgName: string;
-    pgNum: string;
+    readonly pgName: string;
+    readonly pgNum: string;
 }
