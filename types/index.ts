@@ -8,6 +8,7 @@ export interface LayoutContProps {
 
 export interface TickTypeProps {
     isSelected: boolean; // Change this to boolean
+    err: string;
     price: string;
     info: string;
     handleTicketTypeSelection: (type: string) => void;
