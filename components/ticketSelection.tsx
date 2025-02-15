@@ -29,7 +29,6 @@ const TicketSelection = () => {
     localStorage.setItem('selectedType', selectedType);
     localStorage.setItem('numberOfTickets', numberOfTickets.toString());
     
-    // Simulate a delay for loading
     setTimeout(() => {
       router.push('/page-two');
       setLoading(false);
@@ -99,7 +98,7 @@ const TicketSelection = () => {
         </div>
 
         <div className='flex flex-col lg:flex-row justify-between gap-[1rem] mt-6'>
-          {loading ? <Loading /> : <ButtonCtrl btnName='Cancel' bgCol='#041E23' color='#24A0B5' handleClicks={handleReturnClicks}/>}
+         <ButtonCtrl btnName='Cancel' bgCol='#041E23' color='#24A0B5' handleClicks={handleReturnClicks}/>
           {loading ? <Loading /> : <ButtonCtrl btnName='Next' bgCol='#24A0B5' color='#fff' handleClicks={handleNextClick}/>}
         </div>
       </main>

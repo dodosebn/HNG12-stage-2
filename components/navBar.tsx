@@ -13,21 +13,19 @@ const NavBar = () => {
   };
 
   return (
-    <div className='bg-[#02191D] bg-cover p-[2rem] overflow-hidden rounded-lg border-[#24A0B5] border-[1px]'>
+    <div className='bg-[#02191D] w-full p-2 lg:p-[2rem] rounded-t-lg border-b-[#24A0B5] border-b-[1px]'>
       <nav className='flex justify-between items-center'>
 
         <div>
           <Image src={navLogo} alt='god' />
         </div>
 
-  
         <div className='lg:hidden'>
           <button onClick={toggleMenu} className='text-[#fafafa]'>
             {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
 
-      
         <div
           className={`${
             isMenuOpen ? 'block' : 'hidden'
@@ -40,13 +38,11 @@ const NavBar = () => {
           </ul>
         </div>
 
-    
-        <div className='hidden lg:block'>
+        <div>
           <button className='bg-[#fff] p-[0.5rem] rounded-lg border-none flex'>
            <div className='pt-[2px] text-2xl font-bold'>My Ticket</div> 
             <FcAdvance size={32} color='#fff'/>
           </button>
-
         </div>
       </nav>
     </div>

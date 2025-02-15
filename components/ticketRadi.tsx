@@ -8,9 +8,12 @@ import Loading from './customs/loading';
 import DownScan from '@/public/img/stuff down .png';
 import Image from 'next/image';
 import TableHolderPg3 from './customs/tableHolderPg3';
+import jsPDF from 'jspdf';
+
 const TicketRadi = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(true);
+    const [downloadStatus, setDownloadStatus] = useState('Download Ticket');
     const [formDatas, setFormData] = useState({
         name: '',
         email: '',
@@ -43,12 +46,35 @@ const TicketRadi = () => {
     }, []);
 
     const handleDownload = () => {
-        alert('God have mercy on me');
-    }
+        setDownloadStatus('Downloading...');
+        const doc = new jsPDF();
+        doc.setFontSize(18);
+        doc.text('Techember Fest ”25', 10, 20);
+        doc.setFontSize(12);
+        doc.text('📍 04 Rumens Road, Ikoyi, Lagos 📅 March 15, 2025 | 7:00 PM', 10, 30);
+        doc.text(`Name: ${formDatas.name}`, 10, 40);
+        doc.text(`Email: ${formDatas.email}`, 10, 50);
+        doc.text(`Ticket Type: ${formDatas.selectedType}`, 10, 60);
+        doc.text(`Number of Tickets: ${formDatas.numberOfTickets}`, 10, 70);
+        doc.text(`Special Request: ${formDatas.specialRequest || "Nil"}`, 10, 80);
+
+        if (formDatas.imageUrl) {
+            const img = new window.Image(); 
+            img.src = formDatas.imageUrl;
+            img.onload = () => {
+                doc.addImage(img, 'JPEG', 10, 90, 50, 50);
+                doc.save('ticket.pdf');
+                setDownloadStatus('Downloaded');
+            };
+        } else {
+            doc.save('ticket.pdf');
+            setDownloadStatus('Downloaded');
+        }
+    };
 
     const returnPage = () => {
         router.push('/');
-    }
+    };
 
     return (
         <LayoutCont>
@@ -74,7 +100,6 @@ const TicketRadi = () => {
                                 )}
                             </div>
 
-                            
                             <section className="grid grid-cols-2 w-64 mx-auto rounded-lg">
                                 <TableHolderPg3 h3Val='Enter Name' pVal={formDatas.name} />
                                 <TableHolderPg3 h3Val='Enter Email *' pVal={formDatas.email}/>
@@ -89,13 +114,14 @@ const TicketRadi = () => {
                             </section>
                         </div>
                     </main>
-       <div className='px-[1rem]'><hr className='border-[#24A0B5] border-dotted border-2'/></div>                         <div className='bg-[#12464E] rounded-[20px] border-[1.5px] border-[#24A0B5] p-[2rem]'>
-                <Image src={DownScan} alt='yoh' className='mx-auto'/>
-            </div>
+                    <div className='px-[1rem]'><hr className='border-[#24A0B5] border-dotted border-2'/></div>
+                    <div className='bg-[#12464E] rounded-[20px] border-[1.5px] border-[#24A0B5] p-[2rem]'>
+                        <Image src={DownScan} alt='yoh' className='mx-auto'/>
+                    </div>
                 </div>
-                <div className='flex flex-col lg:flex-row justify-between'>
+                <div className='flex gap-[1rem] flex-col lg:flex-row justify-between'>
                     {loading ? <Loading /> : <ButtonCtrl btnName='Book Another Ticket' bgCol='#041E23' color='#fafafa' handleClicks={returnPage} />}
-                    {loading ? <Loading /> : <ButtonCtrl btnName='Download Ticket' bgCol='#24A0B5' color='#fafafa' handleClicks={handleDownload} />}
+                    {loading ? <Loading /> : <ButtonCtrl btnName={downloadStatus} bgCol='#24A0B5' color='#fafafa' handleClicks={handleDownload} />}
                 </div>
             </div>
         </LayoutCont>
