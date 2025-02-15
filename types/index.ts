@@ -1,17 +1,14 @@
 
 export interface LayoutContProps {
-    // padding: string;
-    // radius: string;
-    // height: string;
     children: React.ReactNode;
 }
 
 export interface TickTypeProps {
-    isSelected: boolean; // Change this to boolean
-    err: string;
+    isSelected: boolean; 
     price: string;
     info: string;
     handleTicketTypeSelection: (type: string) => void;
+        err: string;
   }
 
 export interface ButtonCtrlProps {
